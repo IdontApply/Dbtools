@@ -4,16 +4,14 @@ except ImportError:
     from distutils.core import setup
 
 config = {
- 'description': 'First go on making a DB',
+ 'description': ' DB tool',
  'author': 'Maytham Alherz',
  'url': '',
  'download_url': '.',
- 'author_email': 'My email.',
+ 'author_email': 'gmaytham@gmail.com',
  'version': '0.1',
  'install_requires': [],
- 'packages': [],
- 'scripts': [],
- 'name': 'DB'
+ 'name': 'Dbtools'
 }
 
  setup(**config)
