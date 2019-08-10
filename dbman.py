@@ -26,19 +26,28 @@ class Mydatabase():
         RETURNING idsearch
         '''
         ,
+
         '''
         INSERT INTO pdates (search)
         VALUES (%s)
         RETURNING datesid;
-        ''',
+        '''
+        ,
+
         '''
         WITH sell_key(sellerid) as (
         INSERT INTO seller (name)
         VALUES (%s) ON CONFLICT (name)
         DO UPDATE SET name=EXCLUDED.name
-        RETURNING  sellerid
-        )
+        RETURNING  sellerid)
         INSERT INTO product (seller_id, date, Page, rating, link, price, info)
         SELECT  sellerid, %s, %s, %s, %s, %s, %s FROM sell_key;
-        ''']
+        '''
+        ,
+        '''
+        SELECT * FROM seller
+        WHERE totalsales IS NULL
+        FETCH FIRST ROW ONLY;
+        '''
+        ]
         return list_queries
