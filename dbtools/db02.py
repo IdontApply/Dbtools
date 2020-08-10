@@ -2,9 +2,18 @@ from dbman import Mydatabase as db
 import csv
 
 
-###############################################################################################################################################################################################
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++initials
+d = getcwd()
+# dirname = os.path.dirname
+# ++++++++++++++++++++
+# d_path =
+main_path = dirname(d)
+# ++++++++++++++++++++
+###########################################################
+
+
 def csv_list():
-    with open('/home/mytham9/workspace/working/thescraper/oplist/csvfilesfordb.txt','r+',encoding='utf8') as f:
+    with open(join(main_path , 'oplist', 'csvfilesfordb.txt'),'r+',encoding='utf8') as f:
 
         csvfile = f.readline()
         f.truncate(0)

@@ -1,23 +1,30 @@
 import psycopg2
 
 class Mydatabase():
-    def __init__(self, db="eco", user="hmayt", passw="911750750",host="192.168.0.22"):
+    def __init__(self, db="eco", user=input('user>'), passw=input('passw>'),host="192.168.0.22"): # todo config host in the config
         self.conn = psycopg2.connect(database=db, user=user, password=passw, host=host)
         self.cur = self.conn.cursor()
 
 
-    def query(self, query, parameters):
+    def query(self, query, parameters = None):
         self.cur.execute(query, parameters)
 
 
-    def ru(self):
+    def fetch1(self):
         return self.cur.fetchone()[0]
+
+    def fetcha(self):
+        return self.cur.fetchall()
 
     def commit(self):
         self.conn.commit()
 
     def close(self):
         self.cur.close()
+
+    def cr(self):
+        return self.cur
+
     def commans(self):
         list_queries = ['''
         INSERT INTO search(searchterm) VALUES (%s)
